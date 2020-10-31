@@ -201,7 +201,7 @@ class CustomView @JvmOverloads constructor(
     private fun clickStopSpeedValueAnimation() {
         clickStopSpeedValueAnimator.apply {
             var finishSpeed = speed
-            finishSpeed = if (speed - 6 < 180) speed - 6
+            finishSpeed = if (speed - 6 > 0) speed - 6
             else 0f
             setFloatValues(speed, finishSpeed)
             addUpdateListener {
