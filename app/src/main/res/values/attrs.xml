@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="colorBackground" format="color" />
+    <attr name="borderColor" format="color" />
+    <attr name="arrowColor" format="color" />
+    <attr name="textColor" format="color" />
+
+    <declare-styleable name="CustomView">
+        <attr name="colorBackground" />
+        <attr name="borderColor" />
+        <attr name="arrowColor" />
+        <attr name="textColor" />
+    </declare-styleable>
+
+</resources>
