@@ -4,15 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
     tools:context=".MainActivity">
 
     <com.example.focusstart5.CustomView
         android:id="@+id/customView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         app:borderColor="@android:color/black"
         app:colorBackground="@android:color/darker_gray"
-        app:layout_constraintBottom_toTopOf="@+id/gasButton"
+
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,17 +24,15 @@
         android:id="@+id/gasButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:layout_marginBottom="50dp"
         android:text="gas"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/customView" />
+        app:layout_constraintBottom_toBottomOf="@+id/customView"
+        app:layout_constraintEnd_toEndOf="@+id/customView"
+        tools:layout_editor_absoluteY="343dp" />
 
     <Button
         android:id="@+id/stopButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
         android:text="stop"
         app:layout_constraintStart_toStartOf="@+id/customView"
         app:layout_constraintTop_toTopOf="@+id/gasButton" />

@@ -32,7 +32,7 @@ class CustomView @JvmOverloads constructor(
         const val SUPER_STATE = "super_state"
     }
 
-    private var size = 1000
+    private var size = 10000
     private var bgColor: Int? = null
     private var borderColor: Int? = null
     private var arrowColor: Int? = null
@@ -95,9 +95,9 @@ class CustomView @JvmOverloads constructor(
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         val width = measureDimension(size, widthMeasureSpec)
-        val height = measureDimension(size, heightMeasureSpec)
-        setMeasuredDimension(width, height/2)
-        size= min(width, height)
+        val height = measureDimension(size / 2, heightMeasureSpec)
+        setMeasuredDimension(width, height)
+        size = min(width, height)
         Log.e("size", size.toString())
         onSizeChanged()
     }
@@ -113,11 +113,11 @@ class CustomView @JvmOverloads constructor(
     }
 
     private fun onSizeChanged() {
-        radius = size/ 2f * 0.8f
+        radius = size / 2f * 0.8f
         Log.e("radius", radius.toString())
-        centerY = size/2  - 0.05f * size
+        centerY = size / 2 - 0.05f * size
         Log.e("centerY", centerY.toString())
-        centerX = size/2f
+        centerX = size / 2f
         Log.e("centerX", centerX.toString())
     }
 
@@ -294,8 +294,8 @@ class CustomView @JvmOverloads constructor(
 
         speedometerBackground.apply {
             set(
-                size / 2 - radius, size / 2 - radius - 0.05f * size, size / 2 + radius,
-                size / 2 + radius - 0.05f * size
+                centerX - radius, centerY - radius, centerX + radius,
+                centerY + radius
             )
         }
 
@@ -327,19 +327,19 @@ class CustomView @JvmOverloads constructor(
             size / 2f,
             paint
         )//текущая скорость
-        canvas.drawText("0", paint.textSize, centerY + paint.textSize * 0.3f, paint)//0
-        canvas.drawText("10", paint.textSize * 0.7f, centerY - paint.textSize * 1.15f, paint)//10
-        canvas.drawText("20", paint.textSize * 1.1f, centerY - paint.textSize * 2.55f, paint)//20
-        canvas.drawText("30", paint.textSize * 1.7f, centerY - paint.textSize * 4f, paint)//30
-        canvas.drawText("40", paint.textSize * 2.63f, centerY - paint.textSize * 5.25f, paint)//40
-        canvas.drawText("50", paint.textSize * 3.62f, centerY - paint.textSize * 6.3f, paint)//50
-        canvas.drawText("60", paint.textSize * 4.92f, centerY - paint.textSize * 7.25f, paint)//60
-        canvas.drawText("70", paint.textSize * 6.4f, centerY - paint.textSize * 7.8f, paint)//70
-        canvas.drawText("80", paint.textSize * 7.9f, centerY - paint.textSize * 8.2f, paint)//80
-        canvas.drawText("90", paint.textSize * 9.5f, centerY - paint.textSize * 8.3f, paint)//90
-        canvas.drawText("100", paint.textSize * 10.8f, centerY - paint.textSize * 8.2f, paint)//100
-        canvas.drawText("110", paint.textSize * 12.4f, centerY - paint.textSize * 7.8f, paint)//110
-        canvas.drawText("120", paint.textSize * 13.9f, centerY - paint.textSize * 7.15f, paint)//120
+        canvas.drawText("0", paint.textSize, centerY + paint.textSize * 0.3f, paint)
+        canvas.drawText("10", paint.textSize * 0.7f, centerY - paint.textSize * 1.15f, paint)
+        canvas.drawText("20", paint.textSize * 1.1f, centerY - paint.textSize * 2.55f, paint)
+        canvas.drawText("30", paint.textSize * 1.7f, centerY - paint.textSize * 4f, paint)
+        canvas.drawText("40", paint.textSize * 2.63f, centerY - paint.textSize * 5.25f, paint)
+        canvas.drawText("50", paint.textSize * 3.62f, centerY - paint.textSize * 6.3f, paint)
+        canvas.drawText("60", paint.textSize * 4.92f, centerY - paint.textSize * 7.25f, paint)
+        canvas.drawText("70", paint.textSize * 6.4f, centerY - paint.textSize * 7.8f, paint)
+        canvas.drawText("80", paint.textSize * 7.9f, centerY - paint.textSize * 8.2f, paint)
+        canvas.drawText("90", paint.textSize * 9.5f, centerY - paint.textSize * 8.3f, paint)
+        canvas.drawText("100", paint.textSize * 10.8f, centerY - paint.textSize * 8.2f, paint)
+        canvas.drawText("110", paint.textSize * 12.4f, centerY - paint.textSize * 7.8f, paint)
+        canvas.drawText("120", paint.textSize * 13.9f, centerY - paint.textSize * 7.15f, paint)
         canvas.drawText("130", paint.textSize * 15.2f, centerY - paint.textSize * 6.3f, paint)
         canvas.drawText("140", paint.textSize * 16.2f, centerY - paint.textSize * 5.25f, paint)
         canvas.drawText("150", paint.textSize * 17.1f, centerY - paint.textSize * 4f, paint)
