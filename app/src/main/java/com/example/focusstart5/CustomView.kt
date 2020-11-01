@@ -32,7 +32,7 @@ class CustomView @JvmOverloads constructor(
         const val SUPER_STATE = "super_state"
     }
 
-    private var size = 10000
+    private var size = 800
     private var bgColor: Int? = null
     private var borderColor: Int? = null
     private var arrowColor: Int? = null
