@@ -18,6 +18,7 @@ import android.view.animation.LinearInterpolator
 import androidx.core.animation.doOnEnd
 import kotlin.math.PI
 import kotlin.math.cos
+import kotlin.math.min
 import kotlin.math.sin
 
 class CustomView @JvmOverloads constructor(
@@ -31,7 +32,7 @@ class CustomView @JvmOverloads constructor(
         const val SUPER_STATE = "super_state"
     }
 
-    private var size = 600
+    private var size = 1000
     private var bgColor: Int? = null
     private var borderColor: Int? = null
     private var arrowColor: Int? = null
@@ -42,9 +43,9 @@ class CustomView @JvmOverloads constructor(
     private var speed = 0f
     private val fullAccelerateTime = 10000
     private val fullDecelerateTime = 5000
-    private val radius: Float = size * 0.8f / 2f
-    private val centerY = size / 2 - 0.05f * size
-    private val centerX = size / 2f
+    private var radius: Float = size * 0.8f / 2f
+    private var centerY = size / 2 - 0.05f * size
+    private var centerX = size / 2f
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val speedometerBackground = RectF()
@@ -94,8 +95,11 @@ class CustomView @JvmOverloads constructor(
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         val width = measureDimension(size, widthMeasureSpec)
-        val height = measureDimension(size / 2, heightMeasureSpec)
-        setMeasuredDimension(width, height)
+        val height = measureDimension(size, heightMeasureSpec)
+        setMeasuredDimension(width, height/2)
+        size= min(width, height)
+        Log.e("size", size.toString())
+        onSizeChanged()
     }
 
     private fun measureDimension(minSize: Int, measureSpec: Int): Int {
@@ -106,6 +110,15 @@ class CustomView @JvmOverloads constructor(
             MeasureSpec.AT_MOST -> minSize.coerceAtMost(specSize)
             else -> minSize
         }
+    }
+
+    private fun onSizeChanged() {
+        radius = size/ 2f * 0.8f
+        Log.e("radius", radius.toString())
+        centerY = size/2  - 0.05f * size
+        Log.e("centerY", centerY.toString())
+        centerX = size/2f
+        Log.e("centerX", centerX.toString())
     }
 
     private fun startArrowColorValueAnimation() {

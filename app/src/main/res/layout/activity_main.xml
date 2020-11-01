@@ -8,7 +8,7 @@
 
     <com.example.focusstart5.CustomView
         android:id="@+id/customView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:borderColor="@android:color/black"
         app:colorBackground="@android:color/darker_gray"
